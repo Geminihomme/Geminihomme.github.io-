@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart – Plimsoll</title>
+  <meta name="description" content="Review your cart and checkout at Plimsoll." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body class="page-cart">
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  Free Shipping on Orders Over $75 &nbsp;|&nbsp; Use Code <strong>PLIMSOLL10</strong> for 10% Off
+</div>
+
+<!-- Header -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">PLIM<span>SOLL</span></a>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="products.html?category=mens">Men</a>
+        <a href="products.html?category=womens">Women</a>
+        <a href="products.html?category=kids">Kids</a>
+        <a href="products.html?sale=true">Sale</a>
+        <a href="products.html?view=brands">Brands</a>
+      </nav>
+      <div class="header-search" role="search">
+        <input type="search" placeholder="Search shoes, brands…" aria-label="Search" />
+        <button aria-label="Submit search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+      <div class="header-icons">
+        <button class="header-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Account</span>
+        </button>
+        <a href="cart.html" class="header-icon-btn" aria-label="Cart" style="color:#c8102e;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count">0</span>
+          <span>Cart</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="products.html?category=mens">Men</a>
+    <a href="products.html?category=womens">Women</a>
+    <a href="products.html?category=kids">Kids</a>
+    <a href="products.html?sale=true">Sale</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="container" style="padding-top:20px;">
+  <nav class="breadcrumb" style="color:#555;" aria-label="Breadcrumb">
+    <a href="index.html" style="color:#555;">Home</a>
+    <span style="color:#bbb;">/</span>
+    <span style="color:#000;">Shopping Cart</span>
+  </nav>
+</div>
+
+<!-- Cart Content -->
+<main>
+  <section class="cart-section">
+    <div class="container">
+
+      <!-- Empty Cart State -->
+      <div class="empty-cart" style="display:none;">
+        <div class="empty-cart-icon">🛒</div>
+        <h2>Your Cart is Empty</h2>
+        <p>Looks like you haven't added anything to your cart yet. Let's fix that!</p>
+        <a href="products.html" class="btn btn-primary">Start Shopping</a>
+      </div>
+
+      <!-- Cart with items -->
+      <div class="cart-content">
+        <div class="cart-grid">
+
+          <!-- Left: Items -->
+          <div>
+            <h1 class="cart-title">Shopping Cart <span id="cart-item-count" style="font-size:1rem;font-weight:500;color:#555;"></span></h1>
+
+            <!-- Free shipping progress -->
+            <div id="shipping-progress" style="background:#f5f5f5;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
+              <p style="font-size:.82rem;font-weight:600;margin-bottom:8px;" id="shipping-msg">Add <strong>$75.00</strong> more for free shipping!</p>
+              <div style="background:#e0e0e0;border-radius:20px;height:6px;overflow:hidden;">
+                <div id="shipping-bar" style="background:#c8102e;height:100%;width:0%;border-radius:20px;transition:width .5s ease;"></div>
+              </div>
+            </div>
+
+            <!-- Items list (populated by JS) -->
+            <div class="cart-items" aria-live="polite" aria-label="Cart items"></div>
+
+            <!-- Continue Shopping -->
+            <div style="margin-top:28px;">
+              <a href="products.html" class="btn btn-outline">
+                &larr; Continue Shopping
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Summary -->
+          <aside class="order-summary" aria-label="Order summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span class="summary-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span class="summary-shipping">$9.99</span>
+            </div>
+            <div class="summary-row">
+              <span>Estimated Tax</span>
+              <span class="summary-tax">$0.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>Estimated Total</span>
+              <span class="summary-total">$0.00</span>
+            </div>
+
+            <!-- Promo Code -->
+            <div class="promo-input-row" role="group" aria-label="Promo code">
+              <input type="text" placeholder="Promo Code" aria-label="Enter promo code" />
+              <button>Apply</button>
+            </div>
+
+            <button class="btn btn-primary checkout-btn" aria-label="Proceed to checkout">
+              Proceed to Checkout &rarr;
+            </button>
+
+            <!-- Guarantees -->
+            <div class="cart-guarantees">
+              <div class="guarantee-item">
+                <span class="guarantee-icon">🔒</span>
+                <span>Secure 256-bit SSL encryption</span>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-icon">↩️</span>
+                <span>Free returns within 30 days</span>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-icon">✅</span>
+                <span>100% authentic products</span>
+              </div>
+            </div>
+
+            <!-- Payment icons -->
+            <div style="margin-top:20px;border-top:1px solid #e8e8e8;padding-top:16px;">
+              <p style="font-size:.72rem;color:#999;margin-bottom:10px;text-align:center;">ACCEPTED PAYMENT METHODS</p>
+              <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">VISA</div>
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">MC</div>
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">AMEX</div>
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">PayPal</div>
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">Apple Pay</div>
+                <div style="background:#f0f0f0;border-radius:4px;padding:4px 10px;font-size:.7rem;font-weight:700;color:#555;">GPay</div>
+              </div>
+            </div>
+
+          </aside>
+          <!-- /order-summary -->
+
+        </div>
+      </div>
+      <!-- /cart-content -->
+
+    </div>
+  </section>
+
+  <!-- You May Like section (always shown) -->
+  <section class="related-section" aria-labelledby="cart-related-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="cart-related-heading">Complete Your <span>Look</span></h2>
+        <a href="products.html" class="view-all-link">View All &rarr;</a>
+      </div>
+      <div class="products-grid" style="grid-template-columns:repeat(4,1fr);">
+
+        <article class="product-card"
+          data-id="af1-001" data-name="Air Force 1 Low" data-brand="Nike"
+          data-price="110" data-color="White/White" data-bg="linear-gradient(135deg,#e8e8e8 0%,#ffffff 50%,#d0d0d0 100%)"
+          tabindex="0" role="button">
+          <div class="product-card-img">
+            <div class="product-card-img-bg shoe-af1">
+              <div class="shoe-art"><div class="shoe-art-upper"></div><div class="shoe-art-tongue"></div><div class="shoe-art-sole"></div></div>
+            </div>
+            <button class="wishlist-btn" aria-label="Wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <button class="btn btn-black quick-add-btn">Quick Add</button>
+          </div>
+          <div class="product-card-info">
+            <p class="product-brand">Nike</p>
+            <h3 class="product-name">Air Force 1 Low</h3>
+            <p class="product-colorway">White / White / White</p>
+            <div class="product-price-row"><span class="product-price">$110.00</span></div>
+          </div>
+        </article>
+
+        <article class="product-card"
+          data-id="chuck-007" data-name="Chuck Taylor All Star" data-brand="Converse"
+          data-price="60" data-color="Orange" data-bg="linear-gradient(135deg,#ff6b35 0%,#f7c59f 50%,#efefd0 100%)"
+          tabindex="0" role="button">
+          <div class="product-card-img">
+            <div class="product-card-img-bg shoe-chuck">
+              <div class="shoe-art"><div class="shoe-art-upper"></div><div class="shoe-art-tongue"></div><div class="shoe-art-sole"></div></div>
+            </div>
+            <button class="wishlist-btn" aria-label="Wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <button class="btn btn-black quick-add-btn">Quick Add</button>
+          </div>
+          <div class="product-card-info">
+            <p class="product-brand">Converse</p>
+            <h3 class="product-name">Chuck Taylor All Star Hi</h3>
+            <p class="product-colorway">Campfire Orange / Egret</p>
+            <div class="product-price-row"><span class="product-price">$60.00</span></div>
+          </div>
+        </article>
+
+        <article class="product-card"
+          data-id="nb550-010" data-name="550" data-brand="New Balance"
+          data-price="110" data-color="Cream/White" data-bg="linear-gradient(135deg,#f5e6c8 0%,#ffffff 50%,#e8d5b0 100%)"
+          tabindex="0" role="button">
+          <div class="product-card-img">
+            <div class="product-card-img-bg shoe-nb550">
+              <div class="shoe-art"><div class="shoe-art-upper"></div><div class="shoe-art-tongue"></div><div class="shoe-art-sole"></div></div>
+            </div>
+            <button class="wishlist-btn" aria-label="Wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <button class="btn btn-black quick-add-btn">Quick Add</button>
+          </div>
+          <div class="product-card-info">
+            <p class="product-brand">New Balance</p>
+            <h3 class="product-name">550</h3>
+            <p class="product-colorway">Cream / White / Sea Salt</p>
+            <div class="product-price-row"><span class="product-price">$110.00</span></div>
+          </div>
+        </article>
+
+        <article class="product-card"
+          data-id="puma-005" data-name="Suede Classic" data-brand="Puma"
+          data-price="75" data-color="Purple/White" data-bg="linear-gradient(135deg,#4a0080 0%,#7b00cc 50%,#2a0050 100%)"
+          tabindex="0" role="button">
+          <div class="product-card-img">
+            <div class="product-card-img-bg shoe-suede">
+              <div class="shoe-art"><div class="shoe-art-upper"></div><div class="shoe-art-tongue"></div><div class="shoe-art-sole"></div></div>
+            </div>
+            <button class="wishlist-btn" aria-label="Wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <button class="btn btn-black quick-add-btn">Quick Add</button>
+          </div>
+          <div class="product-card-info">
+            <p class="product-brand">Puma</p>
+            <h3 class="product-name">Suede Classic XXI</h3>
+            <p class="product-colorway">Prism Violet / White</p>
+            <div class="product-price-row">
+              <span class="product-price product-price-sale">$75.00</span>
+              <span class="product-price-original">$100.00</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">PLIM<span>SOLL</span></a>
+        <p>Your go-to destination for the freshest sneakers and streetwear.</p>
+        <div class="footer-social">
+          <button class="social-btn">IG</button>
+          <button class="social-btn">X</button>
+          <button class="social-btn">FB</button>
+          <button class="social-btn">TK</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="products.html?category=mens">Men's</a></li>
+          <li><a href="products.html?category=womens">Women's</a></li>
+          <li><a href="products.html?category=kids">Kids'</a></li>
+          <li><a href="products.html?sale=true">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Plimsoll Inc. All rights reserved.</p>
+      <nav class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Cart page: shipping progress bar
+  (function () {
+    function updateShippingBar() {
+      var cart = JSON.parse(localStorage.getItem('plimsoll_cart') || '[]');
+      var subtotal = cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+      var pct = Math.min(100, (subtotal / 75) * 100);
+      var bar = document.getElementById('shipping-bar');
+      var msg = document.getElementById('shipping-msg');
+      var countEl = document.getElementById('cart-item-count');
+
+      if (bar) bar.style.width = pct + '%';
+      if (countEl) {
+        var count = cart.reduce(function (s, i) { return s + i.qty; }, 0);
+        countEl.textContent = '(' + count + ' ' + (count === 1 ? 'item' : 'items') + ')';
+      }
+      if (msg) {
+        if (subtotal >= 75) {
+          msg.innerHTML = '<strong>🎉 You qualify for FREE shipping!</strong>';
+          bar.style.background = '#1d7a3e';
+        } else {
+          var remaining = (75 - subtotal).toFixed(2);
+          msg.innerHTML = 'Add <strong>$' + remaining + '</strong> more for free shipping!';
+        }
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateShippingBar);
+    } else {
+      updateShippingBar();
+    }
+    // re-run after main script has rendered cart
+    setTimeout(updateShippingBar, 50);
+  })();
+</script>
+</body>
+</html>
