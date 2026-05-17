@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F — Fresh Kicks, Every Step</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ─────────────────────────────────────────── -->
+<div class="announce-bar">
+  <span>FREE SHIPPING ON ORDERS $75+ &nbsp;|&nbsp; USE CODE <strong>FRESH25</strong> FOR 25% OFF</span>
+</div>
+
+<!-- ── HEADER ────────────────────────────────────────────────────── -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+
+    <!-- Nav left -->
+    <nav class="nav-main" id="nav-main">
+      <button class="nav-close" id="nav-close" aria-label="Close menu">✕</button>
+      <ul>
+        <li class="has-mega"><a href="#">Men</a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h4>Shoes</h4>
+              <ul><li><a href="#">Lifestyle</a></li><li><a href="#">Running</a></li><li><a href="#">Basketball</a></li><li><a href="#">Training</a></li><li><a href="#">Sandals &amp; Slides</a></li></ul>
+            </div>
+            <div class="mega-col">
+              <h4>Brands</h4>
+              <ul><li><a href="#">Nike</a></li><li><a href="#">Jordan</a></li><li><a href="#">Adidas</a></li><li><a href="#">New Balance</a></li><li><a href="#">Puma</a></li><li><a href="#">Reebok</a></li></ul>
+            </div>
+            <div class="mega-col">
+              <h4>Clothing</h4>
+              <ul><li><a href="#">Hoodies &amp; Sweatshirts</a></li><li><a href="#">Jackets</a></li><li><a href="#">Shorts</a></li><li><a href="#">T-Shirts</a></li></ul>
+            </div>
+            <div class="mega-col mega-promo">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80" alt="Promo" />
+              <a href="#" class="btn btn-sm">Shop Men's</a>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega"><a href="#">Women</a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h4>Shoes</h4>
+              <ul><li><a href="#">Lifestyle</a></li><li><a href="#">Running</a></li><li><a href="#">Training</a></li><li><a href="#">Sandals &amp; Slides</a></li></ul>
+            </div>
+            <div class="mega-col">
+              <h4>Brands</h4>
+              <ul><li><a href="#">Nike</a></li><li><a href="#">Adidas</a></li><li><a href="#">New Balance</a></li><li><a href="#">UGG</a></li><li><a href="#">Puma</a></li></ul>
+            </div>
+            <div class="mega-col mega-promo">
+              <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=300&q=80" alt="Promo" />
+              <a href="#" class="btn btn-sm">Shop Women's</a>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega"><a href="#">Kids</a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h4>Boys</h4>
+              <ul><li><a href="#">Shoes</a></li><li><a href="#">Clothing</a></li><li><a href="#">Accessories</a></li></ul>
+            </div>
+            <div class="mega-col">
+              <h4>Girls</h4>
+              <ul><li><a href="#">Shoes</a></li><li><a href="#">Clothing</a></li><li><a href="#">Accessories</a></li></ul>
+            </div>
+            <div class="mega-col mega-promo">
+              <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&q=80" alt="Promo" />
+              <a href="#" class="btn btn-sm">Shop Kids'</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Brands</a></li>
+        <li><a href="#" class="nav-sale">Sale</a></li>
+        <li><a href="#">New Arrivals</a></li>
+      </ul>
+    </nav>
+
+    <!-- Logo -->
+    <a href="#" class="site-logo" aria-label="F — Home">
+      <span class="logo-letter">F</span>
+    </a>
+
+    <!-- Header actions -->
+    <div class="header-actions">
+      <button class="icon-btn search-toggle" id="search-toggle" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cart-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-bar" id="search-bar">
+    <div class="search-inner">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Search sneakers, brands, styles…" id="search-input" />
+      <button class="search-close" id="search-close">✕</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ──────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-slides" id="hero-slides">
+
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1556906781-9a412961a5bd?w=1600&q=85')">
+      <div class="hero-content">
+        <p class="hero-eyebrow">New Drop</p>
+        <h1>Air Max<br>Pulse</h1>
+        <p class="hero-sub">The future of comfort is here. Engineered for everyday legends.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary">Shop Now</a>
+          <a href="#" class="btn btn-outline-white">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1552346154-21d32383afe9?w=1600&q=85')">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Exclusive</p>
+        <h1>Jordan<br>Retro 4</h1>
+        <p class="hero-sub">Iconic silhouette. Modern energy. Limited sizes remain.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary">Shop Now</a>
+          <a href="#" class="btn btn-outline-white">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1605408499391-6368c628ef42?w=1600&q=85')">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Just In</p>
+        <h1>Ultraboost<br>Light</h1>
+        <p class="hero-sub">30% lighter. Infinite energy return. Run your world.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary">Shop Now</a>
+          <a href="#" class="btn btn-outline-white">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-controls">
+    <button class="hero-prev" id="hero-prev" aria-label="Previous">&#8592;</button>
+    <div class="hero-dots" id="hero-dots">
+      <button class="dot active"></button>
+      <button class="dot"></button>
+      <button class="dot"></button>
+    </div>
+    <button class="hero-next" id="hero-next" aria-label="Next">&#8594;</button>
+  </div>
+</section>
+
+<!-- ── CATEGORY TILES ────────────────────────────────────────────── -->
+<section class="section category-section">
+  <div class="container">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-grid">
+      <a href="#" class="cat-tile" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80')">
+        <span>Men</span>
+      </a>
+      <a href="#" class="cat-tile" style="background-image:url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80')">
+        <span>Women</span>
+      </a>
+      <a href="#" class="cat-tile" style="background-image:url('https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=80')">
+        <span>Kids</span>
+      </a>
+      <a href="#" class="cat-tile" style="background-image:url('https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&q=80')">
+        <span>New Arrivals</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED PRODUCTS ─────────────────────────────────────────── -->
+<section class="section" id="featured">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Sneakers</h2>
+      <a href="#" class="view-all">View All ›</a>
+    </div>
+    <div class="product-grid" id="product-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMO BANNER ──────────────────────────────────────────────── -->
+<section class="promo-band">
+  <div class="promo-band-inner">
+    <div class="promo-band-text">
+      <p class="promo-eyebrow">Members Only</p>
+      <h2>Join the F Fam.<br>Unlock Exclusive Drops.</h2>
+      <p>Early access to new releases, members-only pricing, and birthday rewards.</p>
+      <a href="#" class="btn btn-primary">Sign Up Free</a>
+    </div>
+    <div class="promo-band-img">
+      <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=700&q=80" alt="Exclusive member shoes" />
+    </div>
+  </div>
+</section>
+
+<!-- ── BRANDS ────────────────────────────────────────────────────── -->
+<section class="section brands-section">
+  <div class="container">
+    <h2 class="section-title">Top Brands</h2>
+    <div class="brands-grid">
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 100 40" width="90"><text x="50" y="30" text-anchor="middle" font-family="Arial Black" font-size="22" fill="currentColor">NIKE</text></svg>
+      </a>
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 120 40" width="110"><text x="60" y="30" text-anchor="middle" font-family="Arial Black" font-size="20" fill="currentColor">ADIDAS</text></svg>
+      </a>
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 120 40" width="110"><text x="60" y="30" text-anchor="middle" font-family="Arial Black" font-size="18" fill="currentColor">JORDAN</text></svg>
+      </a>
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 160 40" width="140"><text x="80" y="30" text-anchor="middle" font-family="Arial Black" font-size="16" fill="currentColor">NEW BALANCE</text></svg>
+      </a>
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 100 40" width="90"><text x="50" y="30" text-anchor="middle" font-family="Arial Black" font-size="22" fill="currentColor">PUMA</text></svg>
+      </a>
+      <a href="#" class="brand-tile">
+        <svg viewBox="0 0 120 40" width="110"><text x="60" y="30" text-anchor="middle" font-family="Arial Black" font-size="20" fill="currentColor">REEBOK</text></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SALE PRODUCTS ─────────────────────────────────────────────── -->
+<section class="section sale-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title sale-title">Sale <span class="sale-tag">Up to 50% Off</span></h2>
+      <a href="#" class="view-all">View All ›</a>
+    </div>
+    <div class="product-grid" id="sale-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── DUAL PROMO ────────────────────────────────────────────────── -->
+<section class="section dual-promo-section">
+  <div class="container">
+    <div class="dual-promo-grid">
+      <a href="#" class="dual-promo-tile" style="background-image:url('https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80')">
+        <div class="dual-promo-content">
+          <h3>Running Essentials</h3>
+          <span class="btn btn-sm btn-outline-white">Shop Now</span>
+        </div>
+      </a>
+      <a href="#" class="dual-promo-tile" style="background-image:url('https://images.unsplash.com/photo-1585232350009-03d1c48af5e7?w=800&q=80')">
+        <div class="dual-promo-content">
+          <h3>Basketball Court-Ready</h3>
+          <span class="btn btn-sm btn-outline-white">Shop Now</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ────────────────────────────────────────────────── -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div>
+        <h2>Stay in the Loop</h2>
+        <p>Drop alerts, exclusive offers, and style inspiration — straight to your inbox.</p>
+      </div>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner container">
+
+    <div class="footer-col">
+      <a href="#" class="site-logo footer-logo" aria-label="F — Home"><span class="logo-letter">F</span></a>
+      <p class="footer-tagline">Fresh kicks. Every step.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.24 8.24 0 0 0 4.82 1.55V6.79a4.85 4.85 0 0 1-1.06-.1z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About F</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Store Locator</a></li>
+        <li><a href="#">Sustainability</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Shipping &amp; Returns</a></li>
+        <li><a href="#">Order Status</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Men's Shoes</a></li>
+        <li><a href="#">Women's Shoes</a></li>
+        <li><a href="#">Kids' Shoes</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 F Inc. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Accessibility</a>
+      </div>
+      <div class="payment-icons">
+        <span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>APPLE PAY</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── CART DRAWER ────────────────────────────────────────────────── -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Your Bag (<span id="cart-item-count">0</span>)</h3>
+    <button class="cart-close" id="cart-close">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty" id="cart-empty">
+      <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <p>Your bag is empty</p>
+      <a href="#" class="btn btn-primary">Start Shopping</a>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cart-subtotal">$0.00</span>
+    </div>
+    <p class="cart-shipping-note">Free shipping on orders over $75</p>
+    <a href="#" class="btn btn-primary btn-block">Checkout</a>
+    <a href="#" class="btn btn-ghost btn-block">View Bag</a>
+  </div>
+</aside>
+
+<!-- ── TOAST ──────────────────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
