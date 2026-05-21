@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nike Air Force 1 '07 – Foot Locker UK | PDP Description Prototype</title>
+  <meta name="description" content="Prototype exploring three alternative treatments for product description prominence on a Foot Locker UK product detail page." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --red:   #e21a1a;
+      --grey:  #767676;
+      --light: #f4f4f4;
+      --border:#e0e0e0;
+    }
+
+    body { font-family: Arial, 'Helvetica Neue', sans-serif; color: var(--black); background: var(--white); }
+
+    /* ── Announcement bar ── */
+    .ann-bar {
+      background: var(--black); color: var(--white);
+      text-align: center; font-size: .72rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; padding: 9px 16px;
+    }
+
+    /* ── Header ── */
+    .site-header { background: var(--black); padding: 0 16px; }
+    .hdr-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; gap: 16px; height: 60px;
+    }
+    .fl-logo {
+      font-size: 1.35rem; font-weight: 900; color: var(--white);
+      text-decoration: none; letter-spacing: -.02em; flex-shrink: 0;
+    }
+    .fl-logo em { color: var(--red); font-style: normal; }
+    .hdr-nav { display: flex; flex: 1; }
+    .hdr-nav a {
+      color: var(--white); text-decoration: none; font-size: .72rem;
+      font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      padding: 0 13px; height: 60px; display: flex; align-items: center;
+      border-bottom: 3px solid transparent; transition: border-color .15s;
+    }
+    .hdr-nav a:hover { border-bottom-color: var(--red); }
+    .hdr-utils { display: flex; gap: 16px; align-items: center; margin-left: auto; }
+    .hdr-utils button, .hdr-utils a {
+      background: none; border: none; color: var(--white); cursor: pointer;
+      font-size: .65rem; font-weight: 700; letter-spacing: .05em;
+      text-transform: uppercase; text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+    }
+    .hdr-utils button:focus-visible, .hdr-utils a:focus-visible {
+      outline: 2px solid var(--red); outline-offset: 2px;
+    }
+
+    /* ── Breadcrumb ── */
+    .bc-bar { background: var(--light); border-bottom: 1px solid var(--border); padding: 9px 16px; }
+    .bc-inner { max-width: 1280px; margin: 0 auto; font-size: .72rem; color: var(--grey); }
+    .bc-inner a { color: var(--grey); text-decoration: none; }
+    .bc-inner a:hover { text-decoration: underline; }
+    .bc-inner .sep { margin: 0 6px; }
+
+    /* ── PDP layout ── */
+    .pdp-wrap {
+      max-width: 1280px; margin: 0 auto;
+      padding: 32px 16px 80px;
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 48px; align-items: start;
+    }
+
+    /* ── Gallery ── */
+    .gallery { position: sticky; top: 16px; }
+    .gallery-main {
+      aspect-ratio: 1; background: var(--light); border-radius: 4px;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .shoe-svg { width: 82%; max-width: 360px; }
+    .gallery-thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 8px; }
+    .g-thumb {
+      aspect-ratio: 1; background: var(--light); border-radius: 4px;
+      border: 2px solid transparent; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .15s; overflow: hidden;
+      background: none; /* reset button */
+      padding: 0;
+    }
+    .g-thumb.active { border-color: var(--black); }
+    .g-thumb:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .g-thumb svg { width: 72%; }
+
+    /* ── Buy box ── */
+    .product-brand {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--grey); margin-bottom: 6px;
+    }
+    .product-name { font-size: 1.6rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; letter-spacing: -.02em; }
+    .product-colorway { font-size: .8rem; color: var(--grey); margin-bottom: 14px; }
+    .product-price { font-size: 1.5rem; font-weight: 900; margin-bottom: 16px; }
+
+    .rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .stars { color: #f5a623; letter-spacing: -.05em; }
+    .rating-count { font-size: .78rem; color: var(--grey); }
+
+    .picker-label {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; margin-bottom: 10px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .size-guide-link {
+      background: none; border: none; cursor: pointer;
+      font-size: .75rem; font-weight: 400; text-transform: none;
+      letter-spacing: 0; color: var(--grey); text-decoration: underline;
+    }
+    .size-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; margin-bottom: 22px; }
+    .sz {
+      border: 1.5px solid var(--border); background: var(--white);
+      padding: 10px 4px; font-size: .82rem; font-weight: 600;
+      cursor: pointer; border-radius: 2px; transition: border-color .12s, background .12s;
+    }
+    .sz:hover { border-color: var(--black); }
+    .sz.selected { border-color: var(--black); background: var(--black); color: var(--white); }
+    .sz.na { color: #c8c8c8; border-color: #eee; cursor: not-allowed; text-decoration: line-through; }
+    .sz:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    .atb-btn {
+      width: 100%; background: var(--red); color: var(--white);
+      border: none; font-size: 1rem; font-weight: 900;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 18px; border-radius: 2px; cursor: pointer;
+      margin-bottom: 10px; transition: background .15s;
+    }
+    .atb-btn:hover { background: #c01515; }
+    .atb-btn:focus-visible { outline: 2px solid var(--black); outline-offset: 2px; }
+
+    .wl-btn {
+      width: 100%; background: var(--white); color: var(--black);
+      border: 1.5px solid var(--black); font-size: .88rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      padding: 13px; border-radius: 2px; cursor: pointer;
+      margin-bottom: 22px; transition: background .15s;
+    }
+    .wl-btn:hover { background: var(--light); }
+    .wl-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    .perks { border-top: 1px solid var(--border); padding-top: 18px; margin-bottom: 22px; display: flex; flex-direction: column; gap: 9px; }
+    .perk { display: flex; align-items: center; gap: 10px; font-size: .8rem; }
+    .perk-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── Prototype toggle ── */
+    .proto-bar {
+      background: #101026; border-radius: 8px;
+      padding: 18px; margin-bottom: 24px;
+    }
+    .proto-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #818cf8; margin-bottom: 6px; }
+    .proto-title { font-size: .88rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .proto-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 7px; }
+    .proto-btn {
+      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12);
+      color: #fff; border-radius: 6px; padding: 10px 10px;
+      cursor: pointer; font-size: .72rem; font-weight: 700;
+      letter-spacing: .04em; text-align: left;
+      transition: background .15s, border-color .15s;
+    }
+    .proto-btn:hover { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.25); }
+    .proto-btn.active { background: #818cf8; border-color: #818cf8; }
+    .proto-btn small { display: block; font-weight: 400; font-size: .62rem; opacity: .72; margin-top: 3px; }
+    .proto-btn:focus-visible { outline: 2px solid #818cf8; outline-offset: 2px; }
+
+    /* ── Description zone ── */
+    /* Shared accordion */
+    .acc-item { border-top: 1px solid var(--border); }
+    .acc-item:last-child { border-bottom: 1px solid var(--border); }
+    .acc-btn {
+      width: 100%; background: none; border: none;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 0; font-size: .88rem; font-weight: 700;
+      cursor: pointer; text-align: left; letter-spacing: .02em;
+    }
+    .acc-btn:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+    .acc-chevron { font-size: .7rem; transition: transform .28s; flex-shrink: 0; }
+    .acc-btn[aria-expanded="true"] .acc-chevron { transform: rotate(180deg); }
+    .acc-body-wrap { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+    .acc-body-wrap.open { max-height: 800px; }
+    .acc-body { padding-bottom: 16px; font-size: .84rem; line-height: 1.65; color: #333; }
+    .acc-body ul { padding-left: 18px; margin-top: 6px; }
+    .acc-body li { margin-bottom: 5px; }
+
+    /* Treatment A */
+    .tx-a-intro { font-size: .9rem; line-height: 1.72; color: #222; margin-bottom: 22px; }
+    .spec-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px;
+    }
+    .spec-tile {
+      background: var(--light); border-radius: 4px; padding: 11px 13px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .spec-icon { font-size: 1.05rem; flex-shrink: 0; margin-top: 1px; }
+    .spec-label { display: block; font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--grey); margin-bottom: 2px; }
+    .spec-val { font-size: .82rem; font-weight: 600; }
+    .ship-list { border-top: 1px solid var(--border); padding-top: 16px; font-size: .82rem; line-height: 1.65; color: #333; display: flex; flex-direction: column; gap: 8px; }
+    .ship-row { display: flex; gap: 10px; }
+    .ship-row .perk-icon { flex-shrink: 0; }
+
+    /* Treatment B tabs */
+    .tab-bar { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 18px; }
+    .tab-btn {
+      background: none; border: none; padding: 11px 14px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: border-color .15s, color .15s; color: var(--grey);
+    }
+    .tab-btn:hover { color: var(--black); }
+    .tab-btn[aria-selected="true"] { border-bottom-color: var(--black); color: var(--black); }
+    .tab-btn:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+    .tab-panel { display: none; }
+    .tab-panel.on { display: block; }
+    .tab-body { font-size: .84rem; line-height: 1.68; color: #333; }
+    .tab-body h4 { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--grey); margin: 18px 0 8px; }
+    .tab-body h4:first-child { margin-top: 0; }
+    .tab-body ul { padding-left: 18px; }
+    .tab-body li { margin-bottom: 5px; }
+
+    /* Treatment C editorial */
+    .ed-hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(145deg, #0d0d0d 0%, #1c0000 55%, #3a0000 100%);
+      border-radius: 8px; padding: 36px 28px 32px; margin-bottom: 20px;
+      display: flex; flex-direction: column; gap: 10px; min-height: 190px; justify-content: flex-end;
+    }
+    .ed-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 75% 45%, rgba(226,26,26,.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ed-shoe-bg {
+      position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+      opacity: .18; font-size: 8.5rem; line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+    .ed-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--red); position: relative; }
+    .ed-headline { font-size: 1.35rem; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -.02em; position: relative; }
+    .ed-body { font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.78); position: relative; }
+
+    .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .feat-card {
+      border: 1.5px solid var(--border); border-radius: 6px; padding: 15px;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); }
+    .feat-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+    .feat-title { font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+    .feat-desc { font-size: .77rem; line-height: 1.6; color: #555; }
+
+    .origin-band {
+      background: var(--light); border-radius: 6px; padding: 18px 20px;
+      display: flex; gap: 16px; align-items: center;
+    }
+    .origin-year { font-size: 2.8rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; }
+    .origin-text { font-size: .8rem; line-height: 1.65; color: #444; }
+
+    /* Current-state note */
+    .cur-note { font-size: .72rem; color: var(--grey); font-style: italic; padding: 10px 0 12px; border-top: 1px solid var(--border); }
+
+    /* ── Footer ── */
+    .site-footer { background: var(--black); color: var(--white); padding: 48px 16px 24px; margin-top: 64px; }
+    .ftr-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; margin-bottom: 40px; }
+    .ftr-col h4 { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; color: #888; }
+    .ftr-col ul { list-style: none; }
+    .ftr-col li { margin-bottom: 8px; }
+    .ftr-col a { color: #ccc; text-decoration: none; font-size: .82rem; }
+    .ftr-col a:hover { color: var(--white); }
+    .ftr-bottom {
+      max-width: 1280px; margin: 0 auto; border-top: 1px solid #222; padding-top: 22px;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      font-size: .7rem; color: #555; flex-wrap: wrap;
+    }
+    .ftr-bottom nav a { color: #666; text-decoration: none; margin-left: 16px; }
+    .ftr-bottom nav a:hover { color: #999; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .pdp-wrap { grid-template-columns: 1fr; }
+      .gallery { position: static; }
+      .hdr-nav { display: none; }
+      .ftr-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .spec-grid, .feat-grid, .proto-grid { grid-template-columns: 1fr; }
+      .ftr-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Announcement bar -->
+<div class="ann-bar">
+  Free Standard Delivery on orders over £75&nbsp;&nbsp;|&nbsp;&nbsp;Up to 50% off Sale — Don't miss out
+</div>
+
+<!-- Header -->
+<header class="site-header" role="banner">
+  <div class="hdr-inner">
+    <a href="#" class="fl-logo" aria-label="Foot Locker UK home">FOOT<em>LOCKER</em></a>
+    <nav class="hdr-nav" aria-label="Primary navigation">
+      <a href="#">Men</a><a href="#">Women</a><a href="#">Kids</a>
+      <a href="#">Brands</a><a href="#">Running</a><a href="#">Sale</a>
+    </nav>
+    <div class="hdr-utils">
+      <button aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
+      <button aria-label="Account">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Account
+      </button>
+      <button aria-label="Wishlist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Wishlist
+      </button>
+      <a href="#" aria-label="Bag, 0 items">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Bag (0)
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="bc-bar">
+  <nav class="bc-inner" aria-label="Breadcrumb">
+    <a href="#">Home</a><span class="sep" aria-hidden="true">/</span>
+    <a href="#">Men's Shoes</a><span class="sep" aria-hidden="true">/</span>
+    <a href="#">Nike</a><span class="sep" aria-hidden="true">/</span>
+    Nike Air Force 1 '07
+  </nav>
+</div>
+
+<!-- PDP -->
+<main>
+<div class="pdp-wrap">
+
+  <!-- ── Gallery ── -->
+  <div class="gallery" aria-label="Product images">
+    <div class="gallery-main">
+      <!-- CSS/SVG AF1 illustration — no real images required -->
+      <svg class="shoe-svg" viewBox="0 0 500 290" fill="none" xmlns="http://www.w3.org/2000/svg"
+        role="img" aria-label="Nike Air Force 1 '07 in white, lateral view">
+        <!-- Outsole -->
+        <ellipse cx="250" cy="258" rx="208" ry="20" fill="#e2e2e2"/>
+        <!-- Midsole -->
+        <path d="M62 236 Q72 208 112 204 L388 204 Q428 204 438 216 Q448 228 438 236 Z" fill="#fff" stroke="#d8d8d8" stroke-width="1.2"/>
+        <!-- Upper body -->
+        <path d="M102 204 Q92 148 112 106 Q132 72 182 64 L342 64 Q392 67 412 92 Q432 118 426 164 L392 204 Z" fill="#f6f6f6" stroke="#e0e0e0" stroke-width="1.5"/>
+        <!-- Toe cap -->
+        <path d="M62 236 Q62 204 102 204 Q92 148 112 106 Q82 100 66 148 Q52 180 62 236Z" fill="#f2f2f2" stroke="#e0e0e0" stroke-width="1.2"/>
+        <!-- Heel counter -->
+        <path d="M392 204 L426 164 Q436 134 426 106 Q416 82 392 80 L392 204Z" fill="#ececec" stroke="#ddd" stroke-width="1.2"/>
+        <!-- Tongue -->
+        <path d="M222 64 Q232 32 252 22 Q272 32 282 64Z" fill="#f4f4f4" stroke="#ddd" stroke-width="1"/>
+        <!-- Laces -->
+        <line x1="202" y1="70" x2="302" y2="70" stroke="#ccc" stroke-width="2" stroke-dasharray="9 7"/>
+        <line x1="202" y1="79" x2="302" y2="79" stroke="#ccc" stroke-width="2" stroke-dasharray="9 7"/>
+        <line x1="202" y1="88" x2="302" y2="88" stroke="#ccc" stroke-width="2" stroke-dasharray="9 7"/>
+        <!-- Swoosh -->
+        <path d="M128 170 Q198 126 342 156 Q312 164 272 166 Q202 170 128 170Z" fill="#d4d4d4"/>
+        <!-- AF1 stamp -->
+        <text x="158" y="228" font-family="Arial" font-size="8" fill="#aaa" font-weight="700" letter-spacing="1">AIR FORCE 1</text>
+        <!-- Air unit window -->
+        <ellipse cx="370" cy="222" rx="28" ry="9" fill="none" stroke="#c8c8c8" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <!-- Heel NIKE text -->
+        <text x="402" y="155" font-family="Arial" font-size="8.5" font-weight="900" fill="#c0c0c0" transform="rotate(90,402,155)">NIKE</text>
+        <!-- View pill -->
+        <rect x="348" y="262" width="104" height="20" rx="10" fill="rgba(0,0,0,.5)"/>
+        <text x="400" y="276" font-family="Arial" font-size="8" fill="#fff" font-weight="700" text-anchor="middle">LATERAL VIEW</text>
+      </svg>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="gallery-thumbs" role="list">
+      <button class="g-thumb active" aria-label="View 1: lateral" aria-pressed="true">
+        <svg viewBox="0 0 160 100" fill="none" aria-hidden="true">
+          <ellipse cx="80" cy="86" rx="65" ry="9" fill="#e2e2e2"/>
+          <path d="M28 80 Q28 54 42 40 Q58 24 80 22 L112 22 Q134 24 140 42 Q144 58 140 76 L28 80Z" fill="#f4f4f4" stroke="#ddd" stroke-width="1"/>
+          <path d="M42 62 Q82 42 134 58 Q112 64 80 66 Q54 67 42 62Z" fill="#ccc"/>
+        </svg>
+      </button>
+      <button class="g-thumb" aria-label="View 2: medial" aria-pressed="false">
+        <svg viewBox="0 0 160 100" fill="none" aria-hidden="true" style="transform:scaleX(-1)">
+          <ellipse cx="80" cy="86" rx="65" ry="9" fill="#e2e2e2"/>
+          <path d="M28 80 Q28 54 42 40 Q58 24 80 22 L112 22 Q134 24 140 42 Q144 58 140 76 L28 80Z" fill="#f4f4f4" stroke="#ddd" stroke-width="1"/>
+          <path d="M42 62 Q82 42 134 58 Q112 64 80 66 Q54 67 42 62Z" fill="#ccc"/>
+        </svg>
+      </button>
+      <button class="g-thumb" aria-label="View 3: top down" aria-pressed="false">
+        <svg viewBox="0 0 160 100" fill="none" aria-hidden="true">
+          <ellipse cx="80" cy="50" rx="60" ry="32" fill="#f4f4f4" stroke="#ddd" stroke-width="1"/>
+          <ellipse cx="80" cy="50" rx="38" ry="20" fill="none" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="5 4"/>
+          <ellipse cx="80" cy="50" rx="14" ry="8" fill="#eaeaea"/>
+        </svg>
+      </button>
+      <button class="g-thumb" aria-label="View 4: heel" aria-pressed="false">
+        <svg viewBox="0 0 160 100" fill="none" aria-hidden="true">
+          <rect x="42" y="14" width="76" height="66" rx="8" fill="#f4f4f4" stroke="#ddd" stroke-width="1"/>
+          <ellipse cx="80" cy="76" rx="36" ry="9" fill="#e8e8e8"/>
+          <text x="80" y="53" font-family="Arial" font-size="11" fill="#c8c8c8" font-weight="900" text-anchor="middle">NIKE</text>
+        </svg>
+      </button>
+    </div>
+  </div><!-- /gallery -->
+
+  <!-- ── Buy box ── -->
+  <div class="buybox">
+    <p class="product-brand">Nike</p>
+    <h1 class="product-name">Nike Air Force 1 '07</h1>
+    <p class="product-colorway">White / White / White &mdash; Style: CW2288-111</p>
+    <p class="product-price">£104.99</p>
+
+    <div class="rating-row">
+      <span class="stars" aria-label="4.8 out of 5 stars">★★★★★</span>
+      <span class="rating-count">4.8 &middot; 12,847 Reviews</span>
+    </div>
+
+    <p class="picker-label">
+      Select Size (UK)
+      <button class="size-guide-link" aria-label="Open size guide">Size Guide</button>
+    </p>
+    <div class="size-grid" role="group" aria-label="Select shoe size">
+      <button class="sz" data-size="3">3</button>
+      <button class="sz" data-size="3.5">3.5</button>
+      <button class="sz" data-size="4">4</button>
+      <button class="sz" data-size="4.5">4.5</button>
+      <button class="sz" data-size="5">5</button>
+      <button class="sz" data-size="5.5">5.5</button>
+      <button class="sz" data-size="6">6</button>
+      <button class="sz" data-size="6.5">6.5</button>
+      <button class="sz" data-size="7">7</button>
+      <button class="sz" data-size="7.5">7.5</button>
+      <button class="sz" data-size="8">8</button>
+      <button class="sz" data-size="8.5">8.5</button>
+      <button class="sz na" data-size="9" aria-disabled="true">9</button>
+      <button class="sz" data-size="9.5">9.5</button>
+      <button class="sz na" data-size="10" aria-disabled="true">10</button>
+    </div>
+
+    <button class="atb-btn">Add to Bag</button>
+    <button class="wl-btn">&#9825; Save to Wishlist</button>
+
+    <div class="perks">
+      <div class="perk"><span class="perk-icon" aria-hidden="true">🚚</span><span><strong>Free Standard Delivery</strong> on orders over £75</span></div>
+      <div class="perk"><span class="perk-icon" aria-hidden="true">↩</span><span><strong>Free Returns</strong> within 30 days</span></div>
+      <div class="perk"><span class="perk-icon" aria-hidden="true">🔒</span><span><strong>Secure Checkout</strong></span></div>
+    </div>
+
+    <!-- ── Prototype treatment switcher ── -->
+    <div class="proto-bar" role="group" aria-labelledby="proto-lbl">
+      <p class="proto-eyebrow">&#9679; Prototype — Description Treatment</p>
+      <p class="proto-title" id="proto-lbl">How should the product description be surfaced?</p>
+      <div class="proto-grid">
+        <button class="proto-btn" data-t="cur" aria-pressed="false">
+          Current State
+          <small>Collapsed accordion — last on page</small>
+        </button>
+        <button class="proto-btn active" data-t="a" aria-pressed="true">
+          A — Surface &amp; Structure
+          <small>Expanded by default + spec grid</small>
+        </button>
+        <button class="proto-btn" data-t="b" aria-pressed="false">
+          B — Tabbed Sections
+          <small>Overview / Specs / Delivery</small>
+        </button>
+        <button class="proto-btn" data-t="c" aria-pressed="false">
+          C — Editorial Story
+          <small>Narrative + feature cards</small>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Description treatments ── -->
+
+    <!-- CURRENT STATE -->
+    <div id="t-cur" hidden>
+      <p class="cur-note">Current state: description is the last item in a collapsed accordion below the buy box.</p>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="acc-desc-cur">
+          Description <span class="acc-chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="acc-body-wrap" id="acc-desc-cur" role="region">
+          <div class="acc-body">
+            <p>Hoops-inspired style meets street-ready durability. The Nike Air Force 1 '07 keeps the classic AF1 look with a premium leather upper and encapsulated Air cushioning.</p>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="acc-det-cur">
+          Details <span class="acc-chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="acc-body-wrap" id="acc-det-cur" role="region">
+          <div class="acc-body">
+            <ul>
+              <li>Leather upper</li>
+              <li>Foam midsole with encapsulated Air-Sole unit</li>
+              <li>Rubber cupsole</li>
+              <li>Style: CW2288-111</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="acc-del-cur">
+          Delivery &amp; Returns <span class="acc-chevron" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="acc-body-wrap" id="acc-del-cur" role="region">
+          <div class="acc-body">
+            <ul>
+              <li>Standard Delivery (3–5 days): £4.99, free over £75</li>
+              <li>Express Delivery (1–2 days): £5.99</li>
+              <li>Free returns within 30 days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div><!-- /current -->
+
+    <!-- TREATMENT A — Surface & Structure -->
+    <div id="t-a">
+      <p class="tx-a-intro">
+        Hoops-inspired style meets street-ready durability. First designed for the hardwood in 1982, the Air Force 1 became a cultural icon before the decade was out. The Nike Air Force 1 '07 keeps that legacy alive with a premium leather upper, plush foam padding, and the same encapsulated Air cushioning that made the original a game-changer.
+      </p>
+      <div class="spec-grid" role="list" aria-label="Product specifications">
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">👟</span>
+          <span><span class="spec-label">Upper</span><span class="spec-val">Full-grain leather</span></span>
+        </div>
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">💨</span>
+          <span><span class="spec-label">Cushioning</span><span class="spec-val">Encapsulated Air-Sole</span></span>
+        </div>
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">🏁</span>
+          <span><span class="spec-label">Outsole</span><span class="spec-val">Rubber cupsole</span></span>
+        </div>
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">🎨</span>
+          <span><span class="spec-label">Colourway</span><span class="spec-val">White / White / White</span></span>
+        </div>
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">📏</span>
+          <span><span class="spec-label">Fit</span><span class="spec-val">True to size</span></span>
+        </div>
+        <div class="spec-tile" role="listitem">
+          <span class="spec-icon" aria-hidden="true">🏷</span>
+          <span><span class="spec-label">Style No.</span><span class="spec-val">CW2288-111</span></span>
+        </div>
+      </div>
+      <div class="ship-list">
+        <div class="ship-row"><span class="perk-icon" aria-hidden="true">🚚</span><span><strong>Standard Delivery</strong> (3–5 days) — £4.99, free on orders over £75</span></div>
+        <div class="ship-row"><span class="perk-icon" aria-hidden="true">⚡</span><span><strong>Express Delivery</strong> (1–2 days) — £5.99</span></div>
+        <div class="ship-row"><span class="perk-icon" aria-hidden="true">↩</span><span><strong>Free Returns</strong> within 30 days — unworn, original packaging</span></div>
+      </div>
+    </div><!-- /treatment-a -->
+
+    <!-- TREATMENT B — Tabbed Sections -->
+    <div id="t-b" hidden>
+      <div class="tab-bar" role="tablist" aria-label="Product information">
+        <button class="tab-btn" role="tab" aria-selected="true"  aria-controls="tb-overview" id="tbn-overview">Overview</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tb-specs"    id="tbn-specs">Features &amp; Specs</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tb-delivery" id="tbn-delivery">Delivery &amp; Returns</button>
+      </div>
+      <div id="tb-overview" class="tab-panel on" role="tabpanel" aria-labelledby="tbn-overview">
+        <div class="tab-body">
+          <p>Hoops-inspired style meets street-ready durability. First designed for the hardwood in 1982, the Air Force 1 became a streetwear icon before the decade was out.</p>
+          <p style="margin-top:10px;">The Nike Air Force 1 '07 keeps that legacy alive with a premium leather upper, plush foam padding, and encapsulated Air cushioning. Whether you're wearing them court-side or commuting, the clean white-on-white palette pairs with anything.</p>
+        </div>
+      </div>
+      <div id="tb-specs" class="tab-panel" role="tabpanel" aria-labelledby="tbn-specs" hidden>
+        <div class="tab-body">
+          <h4>Materials</h4>
+          <ul>
+            <li>Full-grain leather upper for premium durability and luxury hand feel</li>
+            <li>Perforated toe box for breathability</li>
+            <li>Foam midsole with encapsulated Air-Sole unit</li>
+            <li>Rubber cupsole with herringbone traction pattern</li>
+          </ul>
+          <h4>Fit &amp; Sizing</h4>
+          <ul>
+            <li>True to size — no need to size up or down</li>
+            <li>Padded tongue and collar for comfort</li>
+            <li>Lace closure for a secure, adjustable fit</li>
+          </ul>
+          <h4>Product Details</h4>
+          <div class="spec-grid" style="margin-top:10px;">
+            <div class="spec-tile"><span class="spec-icon" aria-hidden="true">🏷</span><span><span class="spec-label">Style No.</span><span class="spec-val">CW2288-111</span></span></div>
+            <div class="spec-tile"><span class="spec-icon" aria-hidden="true">🌍</span><span><span class="spec-label">Origin</span><span class="spec-val">Vietnam</span></span></div>
+          </div>
+        </div>
+      </div>
+      <div id="tb-delivery" class="tab-panel" role="tabpanel" aria-labelledby="tbn-delivery" hidden>
+        <div class="tab-body">
+          <h4>Delivery Options</h4>
+          <ul>
+            <li><strong>Standard Delivery</strong> (3–5 working days): £4.99 — free on orders over £75</li>
+            <li><strong>Express Delivery</strong> (1–2 working days): £5.99</li>
+            <li><strong>Next Day Delivery</strong> (order before 10 pm): £7.99</li>
+            <li><strong>Click &amp; Collect</strong>: Free to your nearest store</li>
+          </ul>
+          <h4>Returns</h4>
+          <ul>
+            <li>Free returns within 30 days of delivery</li>
+            <li>Items must be unworn and in original packaging</li>
+            <li>Print a returns label from your account or in-store</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /treatment-b -->
+
+    <!-- TREATMENT C — Editorial Story -->
+    <div id="t-c" hidden>
+      <div class="ed-hero">
+        <span class="ed-shoe-bg" aria-hidden="true">👟</span>
+        <p class="ed-eyebrow">Born on the Hardwood, Built for the Streets</p>
+        <h2 class="ed-headline">The Original.<br>Still Undefeated.</h2>
+        <p class="ed-body">When designer Bruce Kilgore unveiled the Air Force 1 in 1982, it was the first basketball shoe to use Nike Air technology. Nobody predicted it would outlast every trend and become the definitive all-white sneaker — worn from Harlem courts to Paris runways.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <span class="feat-icon" aria-hidden="true">💨</span>
+          <p class="feat-title">Air Cushioning</p>
+          <p class="feat-desc">The same encapsulated Air-Sole unit that revolutionised basketball footwear — still delivering that iconic, barely-there ride.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon" aria-hidden="true">👟</span>
+          <p class="feat-title">Premium Leather</p>
+          <p class="feat-desc">Full-grain leather upper that softens and conforms with every wear — getting better, not worn out, over time.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon" aria-hidden="true">🏁</span>
+          <p class="feat-title">Rubber Cupsole</p>
+          <p class="feat-desc">Herringbone traction pattern lifted straight from the court. Grip on every surface, whatever your move.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon" aria-hidden="true">✔</span>
+          <p class="feat-title">True to Size</p>
+          <p class="feat-desc">No guesswork. The AF1 runs true — just pick your usual UK size.</p>
+        </div>
+      </div>
+      <div class="origin-band">
+        <div class="origin-year" aria-hidden="true">1982</div>
+        <p class="origin-text"><strong>Over 40 years on the streets.</strong> The Air Force 1 debuted on the hardwood in 1982, was discontinued, brought back by popular demand, and has been in continuous production since 1986 — one of the longest-running sneakers in history.</p>
+      </div>
+    </div><!-- /treatment-c -->
+
+  </div><!-- /buybox -->
+</div><!-- /pdp-wrap -->
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="ftr-grid">
+    <div class="ftr-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Men's Shoes</a></li>
+        <li><a href="#">Women's Shoes</a></li>
+        <li><a href="#">Kids' Shoes</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Brands</h4>
+      <ul>
+        <li><a href="#">Nike</a></li>
+        <li><a href="#">Adidas</a></li>
+        <li><a href="#">Jordan</a></li>
+        <li><a href="#">New Balance</a></li>
+        <li><a href="#">Puma</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Order Tracking</a></li>
+        <li><a href="#">Returns &amp; Exchanges</a></li>
+        <li><a href="#">Delivery Info</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Foot Locker</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Store Locator</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ftr-bottom">
+    <p>Product imagery and brand assets belong to Nike / Foot Locker and are used for demonstration purposes only.</p>
+    <nav aria-label="Legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Settings</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Gallery thumbnails ── */
+  var thumbs = document.querySelectorAll('.g-thumb');
+  thumbs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      thumbs.forEach(function (x) { x.classList.remove('active'); x.setAttribute('aria-pressed', 'false'); });
+      t.classList.add('active');
+      t.setAttribute('aria-pressed', 'true');
+    });
+  });
+
+  /* ── Size buttons ── */
+  document.querySelectorAll('.sz:not(.na)').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.sz').forEach(function (x) { x.classList.remove('selected'); });
+      b.classList.add('selected');
+    });
+  });
+
+  /* ── Treatment switcher ── */
+  var ids = ['cur', 'a', 'b', 'c'];
+  var protoBtns = document.querySelectorAll('.proto-btn');
+
+  function showTreatment(id) {
+    ids.forEach(function (t) {
+      var el = document.getElementById('t-' + t);
+      if (el) el.hidden = (t !== id);
+    });
+    protoBtns.forEach(function (btn) {
+      var on = btn.dataset.t === id;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  protoBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () { showTreatment(btn.dataset.t); });
+  });
+
+  showTreatment('a'); // default to Treatment A
+
+  /* ── Accordion (current state) ── */
+  document.querySelectorAll('.acc-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      panel.classList.toggle('open', !expanded);
+    });
+  });
+
+  /* ── Tabs (treatment B) — ARIA keyboard pattern ── */
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(function (btn, i) {
+    btn.addEventListener('click', function () {
+      tabBtns.forEach(function (b) {
+        b.setAttribute('aria-selected', 'false');
+        var p = document.getElementById(b.getAttribute('aria-controls'));
+        p.hidden = true; p.classList.remove('on');
+      });
+      btn.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      panel.hidden = false; panel.classList.add('on');
+    });
+
+    btn.addEventListener('keydown', function (e) {
+      var len = tabBtns.length;
+      if (e.key === 'ArrowRight') { e.preventDefault(); tabBtns[(i + 1) % len].click(); tabBtns[(i + 1) % len].focus(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); tabBtns[(i - 1 + len) % len].click(); tabBtns[(i - 1 + len) % len].focus(); }
+      if (e.key === 'Home') { e.preventDefault(); tabBtns[0].click(); tabBtns[0].focus(); }
+      if (e.key === 'End')  { e.preventDefault(); tabBtns[len - 1].click(); tabBtns[len - 1].focus(); }
+    });
+  });
+}());
+</script>
+</body>
+</html>
