@@ -1,525 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plimsoll – The Sneaker Destination</title>
-  <meta name="description" content="Shop the latest sneakers from Nike, Adidas, Jordan, New Balance and more at Plimsoll." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foot Locker UK - PDP Description Proposal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#111;
+      --paper:#fff;
+      --line:#e2e2e2;
+      --muted:#666;
+      --bg:#f4f2ee;
+      --fl-yellow:#ffd400;
+      --good:#0a7d3b;
+      --accent:#e01a2b;
+      --focus:#005fcc;
+      --disp:"Saira Condensed", Impact, sans-serif;
+      --body:"Hanken Grotesk", Arial, sans-serif;
+      --radius:8px;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    body{
+      font-family:var(--body);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+    }
+
+    img{ display:block; max-width:100%; }
+    button{ font:inherit; }
+    button:focus-visible, .swatch:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+
+    .promo{
+      background:#111;
+      color:#fff;
+      text-align:center;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:8px;
+      font-weight:700;
+    }
+
+    .header{
+      background:var(--paper);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 20px;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .logo{
+      font-family:var(--disp);
+      font-weight:800;
+      font-size:22px;
+      display:flex;
+      gap:4px;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    .logo b{ color:#111; }
+    .nav{ display:flex; gap:22px; font-size:13px; font-weight:700; }
+    .nav a{ color:inherit; text-decoration:none; }
+    .nav a:hover{ color:var(--accent); }
+
+    .icons{ display:flex; gap:8px; }
+    .iconbtn{
+      width:36px;
+      height:36px;
+      border:1px solid transparent;
+      background:transparent;
+      cursor:pointer;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+    }
+    .iconbtn:hover{ background:#f1f1f1; }
+    .iconbtn svg{ width:19px; height:19px; stroke:currentColor; stroke-width:2; fill:none; }
+
+    @media(max-width:720px){
+      .nav{ display:none; }
+      .header{ padding-inline:14px; }
+    }
+
+    .page{ max-width:1120px; margin:0 auto; padding:0 20px 80px; }
+    .crumb{ font-size:12px; color:var(--muted); padding:16px 0 8px; }
+    .top{ display:grid; grid-template-columns:1.08fr .92fr; gap:40px; }
+
+    @media(max-width:860px){
+      .top{ grid-template-columns:1fr; gap:24px; }
+      .page{ padding-inline:14px; }
+    }
+
+    .gallery .main{
+      background:#ebe7df;
+      border-radius:var(--radius);
+      aspect-ratio:1/1;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(17,17,17,.05);
+    }
+    .main img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+    }
+    .main img, .thumbs img{ background:#ebe7df; }
+
+    .thumbs{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(64px, 72px));
+      gap:10px;
+      margin-top:12px;
+    }
+    .thumbs button{
+      width:72px;
+      height:72px;
+      border-radius:var(--radius);
+      cursor:pointer;
+      background:#fff;
+      border:2px solid transparent;
+      overflow:hidden;
+      padding:0;
+    }
+    .thumbs button[aria-selected="true"]{ border-color:#111; }
+    .thumbs img{ width:100%; height:100%; object-fit:cover; }
+
+    .eyebrow{
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+    }
+    h1{
+      font-family:var(--disp);
+      font-weight:800;
+      text-transform:uppercase;
+      font-size:clamp(32px, 4vw, 44px);
+      line-height:.95;
+      margin:4px 0 8px;
+    }
+    .rating{ font-size:13px; color:#444; margin-bottom:12px; }
+    .stars{ color:#f5a623; letter-spacing:1px; }
+    .price{ font-family:var(--disp); font-weight:700; font-size:30px; }
+    .vat{ font-size:11px; color:var(--muted); margin-bottom:4px; }
+    .klarna{
+      font-size:12px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:8px 10px;
+      margin:10px 0;
+    }
+    .klarna b{ color:var(--good); }
+
+    .label{
+      font-weight:800;
+      font-size:13px;
+      margin:16px 0 8px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+    .swatches{ display:flex; gap:10px; }
+    .swatch{
+      width:42px;
+      height:42px;
+      border-radius:var(--radius);
+      cursor:pointer;
+      border:2px solid transparent;
+    }
+    .swatch[aria-pressed="true"]{ border-color:#111; }
+    .sw-white{ background:#f2f2f2; }
+    .sw-black{ background:#1c1c1c; }
+    .sw-cream{ background:#d8cbb6; }
+
+    .sizes{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
+    .sizes button{
+      cursor:pointer;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:11px 0;
+      font-size:13px;
+      min-width:0;
+    }
+    .sizes button:hover{ border-color:#111; }
+    .sizes button[aria-pressed="true"]{ background:#111; color:#fff; border-color:#111; }
+    .sizes button:disabled{ color:#aaa; text-decoration:line-through; cursor:not-allowed; background:#fafafa; }
+
+    .addbtn{
+      width:100%;
+      margin-top:18px;
+      background:#111;
+      color:#fff;
+      border:0;
+      cursor:pointer;
+      font-family:var(--disp);
+      font-weight:800;
+      text-transform:uppercase;
+      font-size:18px;
+      letter-spacing:.04em;
+      padding:16px;
+      border-radius:var(--radius);
+    }
+    .addbtn:hover{ background:#000; }
+
+    .demo{
+      margin:46px 0 10px;
+      padding:16px;
+      border:1px dashed #c9c4bb;
+      border-radius:var(--radius);
+      background:#fbfaf8;
+    }
+    .demo .hint{ font-size:12px; color:var(--muted); margin-bottom:10px; }
+    .seg{ display:inline-flex; background:#ece8e1; border-radius:8px; padding:4px; gap:4px; flex-wrap:wrap; }
+    .seg button{
+      cursor:pointer;
+      border:0;
+      background:transparent;
+      color:#555;
+      padding:9px 14px;
+      border-radius:6px;
+      font-size:13px;
+      font-weight:700;
+    }
+    .seg button[aria-selected="true"]{ background:#111; color:#fff; }
+
+    .treatment{ display:none; margin-top:22px; }
+    .treatment.active{ display:block; }
+    .sectionhead{
+      font-family:var(--disp);
+      font-weight:800;
+      text-transform:uppercase;
+      font-size:24px;
+      margin-bottom:6px;
+    }
+
+    .a-copy{ max-width:720px; color:#333; }
+    .a-copy h3{ font-size:16px; margin:14px 0 6px; }
+    .specgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-top:20px; }
+    .spec{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .spec svg{ width:21px; min-width:21px; height:21px; stroke:#111; stroke-width:2; fill:none; }
+    .spec b{ display:block; font-size:13px; }
+    .spec span{ font-size:12px; color:var(--muted); }
+
+    .tabnav{ display:flex; gap:6px; border-bottom:1px solid var(--line); margin-bottom:18px; flex-wrap:wrap; }
+    .tabnav button{
+      cursor:pointer;
+      border:0;
+      background:transparent;
+      padding:12px 16px;
+      font-weight:700;
+      font-size:14px;
+      color:#777;
+      border-bottom:3px solid transparent;
+      margin-bottom:-1px;
+    }
+    .tabnav button[aria-selected="true"]{ color:#111; border-bottom-color:#111; }
+    .tabpanel{ display:none; max-width:740px; color:#333; }
+    .tabpanel.active{ display:block; }
+    .tabpanel ul{ margin-left:18px; }
+
+    .story .lead{ font-size:19px; max-width:660px; color:#222; margin-bottom:8px; }
+    .story .block{ display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:center; margin:34px 0; }
+    .story .block:nth-of-type(even) .pic{ order:2; }
+    .story .pic{
+      position:relative;
+      aspect-ratio:4/3;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#ddd;
+    }
+    .story .pic img{ width:100%; height:100%; object-fit:cover; }
+    .story .pic .cap{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      padding:34px 14px 12px;
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      background:linear-gradient(transparent, rgba(0,0,0,.58));
+    }
+    .story .txt h3{
+      font-family:var(--disp);
+      font-weight:800;
+      text-transform:uppercase;
+      font-size:24px;
+      margin-bottom:8px;
+    }
+    .story .txt p{ color:#333; }
+
+    @media(max-width:760px){
+      .story .block{ grid-template-columns:1fr; gap:16px; }
+      .story .block .pic{ order:0 !important; }
+      .sizes{ grid-template-columns:repeat(4,1fr); }
+      .thumbs{ grid-template-columns:repeat(5, minmax(48px, 1fr)); }
+      .thumbs button{ width:100%; height:auto; aspect-ratio:1/1; }
+    }
+  </style>
 </head>
 <body>
+  <div class="promo">Free delivery for FLX members - join free</div>
 
-<!-- Announcement Bar -->
-<div class="announcement-bar">
-  Free Shipping on Orders Over $75 &nbsp;|&nbsp; Use Code <strong>PLIMSOLL10</strong> for 10% Off Your First Order
-</div>
-
-<!-- Header -->
-<header class="site-header" role="banner">
-  <div class="container">
-    <div class="header-inner">
-
-      <a href="index.html" class="site-logo" aria-label="Plimsoll Home">
-        PLIM<span>SOLL</span>
-      </a>
-
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+  <header class="header">
+    <div class="logo" aria-label="Foot Locker">Foot <b>Locker</b></div>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#">Men</a><a href="#">Women</a><a href="#">Kids</a><a href="#">New In</a><a href="#">Brands</a><a href="#">Sale</a>
+    </nav>
+    <div class="icons" aria-label="Shopping tools">
+      <button class="iconbtn" type="button" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
       </button>
-
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="products.html?category=mens"   class="nav-link">Men</a>
-        <a href="products.html?category=womens" class="nav-link">Women</a>
-        <a href="products.html?category=kids"   class="nav-link">Kids</a>
-        <a href="products.html?sale=true"       class="nav-link nav-sale">Sale</a>
-        <a href="products.html?view=brands"     class="nav-link">Brands</a>
-      </nav>
-
-      <div class="header-search" role="search">
-        <input type="search" placeholder="Search shoes, brands…" aria-label="Search" />
-        <button aria-label="Submit search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="header-icons">
-        <button class="header-icon-btn" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span>Account</span>
-        </button>
-        <a href="cart.html" class="header-icon-btn" aria-label="Shopping cart">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-          </svg>
-          <span class="cart-count" aria-live="polite">0</span>
-          <span>Cart</span>
-        </a>
-      </div>
-
+      <button class="iconbtn" type="button" aria-label="Account">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.7-4 4.4-6 8-6s6.3 2 8 6"/></svg>
+      </button>
+      <button class="iconbtn" type="button" aria-label="Bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 13H7L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+      </button>
     </div>
-  </div>
+  </header>
 
-  <!-- Mobile Nav -->
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="products.html?category=mens">Men</a>
-    <a href="products.html?category=womens">Women</a>
-    <a href="products.html?category=kids">Kids</a>
-    <a href="products.html?sale=true">Sale</a>
-    <a href="products.html?view=brands">Brands</a>
-    <a href="cart.html">Cart</a>
-  </nav>
-</header>
+  <main class="page">
+    <div class="crumb">Men / Shoes / Lifestyle / Nike Air Force 1 '07 LV8</div>
 
-<!-- Hero -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-shoe-art" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-content">
-      <p class="hero-eyebrow">New Season Drop</p>
-      <h1 class="hero-title" id="hero-title">
-        Step Into
-        <em>Greatness</em>
-      </h1>
-      <p class="hero-subtitle">
-        Discover this season's most coveted sneakers. From court to street,
-        every step tells your story.
-      </p>
-      <div class="hero-actions">
-        <button class="btn btn-primary hero-shop-now">Shop New Arrivals</button>
-        <a href="products.html?sale=true" class="btn btn-outline-white">View Sale</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Categories -->
-<section class="category-strip" aria-labelledby="categories-heading">
-  <div class="container">
-    <h2 class="section-title" id="categories-heading">Shop by <span>Category</span></h2>
-    <div class="categories-grid">
-
-      <article class="category-card cat-mens" data-category="mens" tabindex="0" role="button" aria-label="Shop Men's sneakers">
-        <div class="category-card-bg"></div>
-        <div class="category-card-label">
-          <h3>Men's</h3>
-          <span>342 Styles</span>
+    <section class="top" aria-label="Product summary">
+      <div class="gallery">
+        <div class="main">
+          <img id="mainImg" src="assets/af1-side.jpg" alt="Nike Air Force 1 '07 Low white side profile">
         </div>
-      </article>
-
-      <article class="category-card cat-womens" data-category="womens" tabindex="0" role="button" aria-label="Shop Women's sneakers">
-        <div class="category-card-bg"></div>
-        <div class="category-card-label">
-          <h3>Women's</h3>
-          <span>278 Styles</span>
-        </div>
-      </article>
-
-      <article class="category-card cat-kids" data-category="kids" tabindex="0" role="button" aria-label="Shop Kids' sneakers">
-        <div class="category-card-bg"></div>
-        <div class="category-card-label">
-          <h3>Kids'</h3>
-          <span>196 Styles</span>
-        </div>
-      </article>
-
-      <article class="category-card cat-new" data-category="new" tabindex="0" role="button" aria-label="Shop New Arrivals">
-        <div class="category-card-bg"></div>
-        <div class="category-card-label">
-          <h3>New Arrivals</h3>
-          <span>48 This Week</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- Featured Products -->
-<section class="products-section" aria-labelledby="featured-heading">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title" id="featured-heading">Featured <span>Products</span></h2>
-      <a href="products.html" class="view-all-link" aria-label="View all products">
-        View All &rarr;
-      </a>
-    </div>
-
-    <div class="products-grid">
-
-      <!-- 1 -->
-      <article class="product-card"
-        data-id="af1-001" data-name="Air Force 1 Low" data-brand="Nike"
-        data-price="110" data-color="White/White" data-bg="linear-gradient(135deg,#e8e8e8 0%,#ffffff 50%,#d0d0d0 100%)"
-        tabindex="0" role="button" aria-label="Nike Air Force 1 Low - $110">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-af1">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <span class="product-badge badge-new">New</span>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="thumbs" role="tablist" aria-label="Product images">
+          <button type="button" role="tab" aria-selected="true" aria-label="View side profile image" data-src="assets/af1-side.jpg" data-alt="Nike Air Force 1 '07 Low white side profile">
+            <img src="assets/af1-side.jpg" alt="">
           </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Nike</p>
-          <h3 class="product-name">Air Force 1 Low</h3>
-          <p class="product-colorway">White / White / White</p>
-          <div class="product-price-row">
-            <span class="product-price">$110.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 4.8 (2,341)</div>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="product-card"
-        data-id="ub23-002" data-name="Ultraboost 23" data-brand="Adidas"
-        data-price="190" data-color="Core Black" data-bg="linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 50%,#c8102e 100%)"
-        tabindex="0" role="button" aria-label="Adidas Ultraboost 23 - $190">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-ub23">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <button type="button" role="tab" aria-selected="false" aria-label="View alternate side image" data-src="assets/af1-alt-side.jpg" data-alt="Alternate side view of the Nike Air Force 1 '07 Low showing the Swoosh and stitched overlays">
+            <img src="assets/af1-alt-side.jpg" alt="">
           </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Adidas</p>
-          <h3 class="product-name">Ultraboost 23</h3>
-          <p class="product-colorway">Core Black / Carbon / Red</p>
-          <div class="product-price-row">
-            <span class="product-price">$190.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 4.9 (1,187)</div>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="product-card"
-        data-id="aj1-003" data-name="Air Jordan 1 High" data-brand="Jordan"
-        data-price="180" data-color="Red/Black" data-bg="linear-gradient(135deg,#8b0000 0%,#cc0000 40%,#000000 100%)"
-        tabindex="0" role="button" aria-label="Jordan Air Jordan 1 High - $180">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-aj1">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <span class="product-badge badge-exclusive">Exclusive</span>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <button type="button" role="tab" aria-selected="false" aria-label="View heel image" data-src="assets/af1-heel.jpg" data-alt="Rear heel angle of the Nike Air Force 1 '07 Low">
+            <img src="assets/af1-heel.jpg" alt="">
           </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Jordan</p>
-          <h3 class="product-name">Air Jordan 1 High OG</h3>
-          <p class="product-colorway">Varsity Red / Black / White</p>
-          <div class="product-price-row">
-            <span class="product-price">$180.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 5.0 (4,892)</div>
-        </div>
-      </article>
-
-      <!-- 4 -->
-      <article class="product-card"
-        data-id="nb990-004" data-name="990v6" data-brand="New Balance"
-        data-price="200" data-color="Grey/Silver" data-bg="linear-gradient(135deg,#555555 0%,#888888 50%,#333333 100%)"
-        tabindex="0" role="button" aria-label="New Balance 990v6 - $200">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-990v6">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <button type="button" role="tab" aria-selected="false" aria-label="View outsole image" data-src="assets/af1-outsole.jpg" data-alt="Bottom outsole view of the Nike Air Force 1 '07 Low showing the traction pattern">
+            <img src="assets/af1-outsole.jpg" alt="">
           </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">New Balance</p>
-          <h3 class="product-name">990v6</h3>
-          <p class="product-colorway">Grey / Silver / White</p>
-          <div class="product-price-row">
-            <span class="product-price">$200.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 4.7 (876)</div>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="product-card"
-        data-id="puma-005" data-name="Suede Classic" data-brand="Puma"
-        data-price="75" data-color="Purple/White" data-bg="linear-gradient(135deg,#4a0080 0%,#7b00cc 50%,#2a0050 100%)"
-        tabindex="0" role="button" aria-label="Puma Suede Classic - $75">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-suede">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <span class="product-badge badge-sale">Sale</span>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <button type="button" role="tab" aria-selected="false" aria-label="View pair image" data-src="assets/af1-pair.jpg" data-alt="Pair of Nike Air Force 1 '07 Low shoes in white">
+            <img src="assets/af1-pair.jpg" alt="">
           </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Puma</p>
-          <h3 class="product-name">Suede Classic XXI</h3>
-          <p class="product-colorway">Prism Violet / White</p>
-          <div class="product-price-row">
-            <span class="product-price product-price-sale">$75.00</span>
-            <span class="product-price-original">$100.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★☆</span> 4.4 (523)</div>
-        </div>
-      </article>
-
-      <!-- 6 -->
-      <article class="product-card"
-        data-id="reebok-006" data-name="Classic Leather" data-brand="Reebok"
-        data-price="80" data-color="Chalk/Paper" data-bg="linear-gradient(135deg,#f5f0e8 0%,#ffffff 50%,#e8e0d0 100%)"
-        tabindex="0" role="button" aria-label="Reebok Classic Leather - $80">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-cl">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Reebok</p>
-          <h3 class="product-name">Classic Leather</h3>
-          <p class="product-colorway">Chalk / Paper White / Glen Green</p>
-          <div class="product-price-row">
-            <span class="product-price">$80.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★☆</span> 4.5 (1,024)</div>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="product-card"
-        data-id="chuck-007" data-name="Chuck Taylor All Star" data-brand="Converse"
-        data-price="60" data-color="Orange" data-bg="linear-gradient(135deg,#ff6b35 0%,#f7c59f 50%,#efefd0 100%)"
-        tabindex="0" role="button" aria-label="Converse Chuck Taylor All Star - $60">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-chuck">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <span class="product-badge badge-new">New</span>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">Converse</p>
-          <h3 class="product-name">Chuck Taylor All Star Hi</h3>
-          <p class="product-colorway">Campfire Orange / Egret</p>
-          <div class="product-price-row">
-            <span class="product-price">$60.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 4.6 (3,201)</div>
-        </div>
-      </article>
-
-      <!-- 8 -->
-      <article class="product-card"
-        data-id="gel-008" data-name="Gel-Kayano 30" data-brand="ASICS"
-        data-price="160" data-color="Blue/Navy" data-bg="linear-gradient(135deg,#003366 0%,#0055aa 50%,#00aaff 100%)"
-        tabindex="0" role="button" aria-label="ASICS Gel-Kayano 30 - $160">
-        <div class="product-card-img">
-          <div class="product-card-img-bg shoe-gel">
-            <div class="shoe-art">
-              <div class="shoe-art-upper"></div>
-              <div class="shoe-art-tongue"></div>
-              <div class="shoe-art-sole"></div>
-            </div>
-          </div>
-          <button class="wishlist-btn" aria-label="Add to wishlist">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <button class="btn btn-black quick-add-btn">Quick Add</button>
-        </div>
-        <div class="product-card-info">
-          <p class="product-brand">ASICS</p>
-          <h3 class="product-name">Gel-Kayano 30</h3>
-          <p class="product-colorway">French Blue / Midnight</p>
-          <div class="product-price-row">
-            <span class="product-price">$160.00</span>
-          </div>
-          <div class="product-stars"><span class="stars">★★★★★</span> 4.8 (678)</div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- Promo Strip -->
-<div class="promo-strip" aria-label="Promotional banners">
-  <div class="promo-panel promo-left">
-    <div class="promo-panel-bg"></div>
-    <div class="promo-panel-content">
-      <p class="eyebrow">Limited Time</p>
-      <h2>Up to 50% Off Sale Styles</h2>
-      <p>Don't miss out on our biggest markdowns of the season.</p>
-      <a href="products.html?sale=true" class="btn btn-outline-white">Shop Sale</a>
-    </div>
-  </div>
-  <div class="promo-panel promo-right">
-    <div class="promo-panel-bg"></div>
-    <div class="promo-panel-content">
-      <p class="eyebrow">Just Dropped</p>
-      <h2>New Season Arrivals</h2>
-      <p>Be the first to step into the freshest drops of the season.</p>
-      <a href="products.html?category=new" class="btn btn-outline-white">Explore Now</a>
-    </div>
-  </div>
-</div>
-
-<!-- Brands -->
-<section class="brands-section" aria-labelledby="brands-heading">
-  <div class="container">
-    <h2 class="section-title" id="brands-heading">Shop by <span>Brand</span></h2>
-    <div class="brands-grid">
-      <a href="products.html?brand=nike"        class="brand-tile" aria-label="Shop Nike">Nike</a>
-      <a href="products.html?brand=adidas"      class="brand-tile" aria-label="Shop Adidas">Adidas</a>
-      <a href="products.html?brand=jordan"      class="brand-tile" aria-label="Shop Jordan">Jordan</a>
-      <a href="products.html?brand=new-balance" class="brand-tile" aria-label="Shop New Balance">New Balance</a>
-      <a href="products.html?brand=puma"        class="brand-tile" aria-label="Shop Puma">Puma</a>
-      <a href="products.html?brand=reebok"      class="brand-tile" aria-label="Shop Reebok">Reebok</a>
-      <a href="products.html?brand=converse"    class="brand-tile" aria-label="Shop Converse">Converse</a>
-      <a href="products.html?brand=asics"       class="brand-tile" aria-label="Shop ASICS">ASICS</a>
-      <a href="products.html?brand=vans"        class="brand-tile" aria-label="Shop Vans">Vans</a>
-      <a href="products.html?brand=saucony"     class="brand-tile" aria-label="Shop Saucony">Saucony</a>
-      <a href="products.html?brand=brooks"      class="brand-tile" aria-label="Shop Brooks">Brooks</a>
-      <a href="products.html?brand=hoka"        class="brand-tile" aria-label="Shop Hoka">Hoka</a>
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section class="newsletter-section" aria-labelledby="newsletter-heading">
-  <div class="container">
-    <h2 class="section-title" id="newsletter-heading">Join the <span>Plimsoll</span> Family</h2>
-    <p class="newsletter-sub">
-      Get early access to new drops, exclusive offers, and sneaker news delivered straight to your inbox.
-    </p>
-    <form class="newsletter-form" role="form" novalidate>
-      <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
-      <button type="submit">Subscribe</button>
-    </form>
-    <p class="newsletter-note">By subscribing you agree to our Privacy Policy. Unsubscribe anytime.</p>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-top">
-
-      <div class="footer-brand">
-        <a href="index.html" class="site-logo">PLIM<span>SOLL</span></a>
-        <p>Your go-to destination for the freshest sneakers and streetwear. Curated styles from the world's top brands, delivered to your door.</p>
-        <div class="footer-social">
-          <button class="social-btn" aria-label="Instagram">IG</button>
-          <button class="social-btn" aria-label="Twitter / X">X</button>
-          <button class="social-btn" aria-label="Facebook">FB</button>
-          <button class="social-btn" aria-label="TikTok">TK</button>
-          <button class="social-btn" aria-label="YouTube">YT</button>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Shop</h4>
+      <div class="buybox">
+        <div class="eyebrow">Nike - Men's Shoes</div>
+        <h1>Air Force 1 '07 LV8</h1>
+        <div class="rating"><span class="stars" aria-label="Rated 4.8 out of 5">★★★★★</span> 4.8 · 2,944 reviews</div>
+        <div class="price">£109.99</div>
+        <div class="vat">VAT included</div>
+        <div class="klarna">Pay in 3 interest-free payments with <b>Klarna</b></div>
+
+        <div class="label" id="colourLabel">Colour - White</div>
+        <div class="swatches" aria-labelledby="colourLabel">
+          <button class="swatch sw-white" type="button" aria-label="White" aria-pressed="true" data-colour="White"></button>
+          <button class="swatch sw-black" type="button" aria-label="Black" aria-pressed="false" data-colour="Black"></button>
+          <button class="swatch sw-cream" type="button" aria-label="Cream" aria-pressed="false" data-colour="Cream"></button>
+        </div>
+
+        <div class="label" id="sizeLabel">Select a size (UK)</div>
+        <div class="sizes" id="sizes" aria-labelledby="sizeLabel">
+          <button type="button" aria-pressed="false">6</button><button type="button" aria-pressed="false">6.5</button><button type="button" aria-pressed="false">7</button><button type="button" aria-pressed="false">7.5</button><button type="button" aria-pressed="false">8</button><button type="button" aria-pressed="false">8.5</button>
+          <button type="button" aria-pressed="false">9</button><button type="button" aria-pressed="false">9.5</button><button type="button" aria-pressed="false">10</button><button type="button" aria-pressed="false">10.5</button><button type="button" disabled>11</button><button type="button" aria-pressed="false">12</button>
+        </div>
+
+        <button class="addbtn" type="button">Add to bag</button>
+      </div>
+    </section>
+
+    <div class="demo">
+      <div class="hint">Demo control - switch how the product description is presented:</div>
+      <div class="seg" id="seg" role="tablist" aria-label="Description treatments">
+        <button type="button" role="tab" aria-selected="true" data-treat="a" aria-controls="treatment-a">A - Surface &amp; Structure</button>
+        <button type="button" role="tab" aria-selected="false" data-treat="b" aria-controls="treatment-b">B - Tabbed Sections</button>
+        <button type="button" role="tab" aria-selected="false" data-treat="c" aria-controls="treatment-c">C - Editorial Story</button>
+      </div>
+    </div>
+
+    <section id="treatment-a" class="treatment active" data-treatment="a" aria-hidden="false">
+      <div class="sectionhead">Product Details</div>
+      <div class="a-copy">
+        <h3>Crisp court style, everyday comfort</h3>
+        <p>The Nike Air Force 1 '07 LV8 keeps the familiar low-cut court profile and updates it with durable stitched overlays, a padded collar, and soft underfoot cushioning. Clean materials, easy styling, and a grippy rubber outsole make it a reliable everyday pair from commute to weekend.</p>
+      </div>
+      <div class="specgrid">
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 5v14M16 5v14"/></svg><div><b>Stitched upper</b><span>Layered court-shoe construction</span></div></div>
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c4-8 12-8 16 0"/><path d="M6 15c3-4 9-4 12 0"/></svg><div><b>Padded collar</b><span>Soft feel around the ankle</span></div></div>
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h14"/><path d="M7 12h10"/><path d="M9 8h6"/></svg><div><b>Foam midsole</b><span>Cushioned step-in comfort</span></div></div>
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16"/><path d="M6 17l2 3 2-3 2 3 2-3 2 3 2-3"/></svg><div><b>Rubber outsole</b><span>Durable traction pattern</span></div></div>
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg><div><b>Perforated toe</b><span>Classic AF1-inspired detail</span></div></div>
+        <div class="spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10H7z"/><path d="M4 4h16v16H4z"/></svg><div><b>Low profile</b><span>Easy to style with everyday fits</span></div></div>
+      </div>
+    </section>
+
+    <section id="treatment-b" class="treatment" data-treatment="b" aria-hidden="true">
+      <div class="tabnav" id="tabnav" role="tablist" aria-label="Product information tabs">
+        <button type="button" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="specs">Features &amp; Specs</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="delivery">Delivery &amp; Returns</button>
+      </div>
+      <div class="tabpanel active" data-panel="overview" aria-hidden="false">
+        <p>The Nike Air Force 1 '07 LV8 brings a clean low-top court shape to everyday rotation. Stitched overlays add structure, a padded collar softens the fit, and a foam midsole keeps each step comfortable.</p>
+      </div>
+      <div class="tabpanel" data-panel="specs" aria-hidden="true">
         <ul>
-          <li><a href="products.html?category=mens">Men's Shoes</a></li>
-          <li><a href="products.html?category=womens">Women's Shoes</a></li>
-          <li><a href="products.html?category=kids">Kids' Shoes</a></li>
-          <li><a href="products.html?category=new">New Arrivals</a></li>
-          <li><a href="products.html?sale=true">Sale</a></li>
-          <li><a href="products.html?view=brands">All Brands</a></li>
+          <li>Layered upper with stitched overlays</li>
+          <li>Perforated toe-box detailing</li>
+          <li>Padded low-cut collar</li>
+          <li>Foam midsole cushioning</li>
+          <li>Durable rubber outsole</li>
+          <li>Lace-up fastening</li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h4>Help</h4>
-        <ul>
-          <li><a href="#">Order Tracking</a></li>
-          <li><a href="#">Returns &amp; Exchanges</a></li>
-          <li><a href="#">Shipping Info</a></li>
-          <li><a href="#">Size Guide</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+      <div class="tabpanel" data-panel="delivery" aria-hidden="true">
+        <p>Free standard delivery for FLX members. Ship to home or collect in store. Free 30-day returns.</p>
       </div>
+    </section>
 
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Plimsoll</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Sustainability</a></li>
-          <li><a href="#">Affiliate Program</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
+    <section id="treatment-c" class="treatment story" data-treatment="c" aria-hidden="true">
+      <p class="lead">A clean court icon made for daily wear - familiar shape, fresh materials, and enough cushioning for repeat rotation.</p>
+      <div class="block">
+        <div class="pic">
+          <img src="assets/af1-side.jpg" alt="Nike Air Force 1 '07 Low in side profile">
+          <span class="cap">The silhouette</span>
+        </div>
+        <div class="txt"><h3>Built for court style, made for the street</h3><p>The low-cut profile, layered panels, and crisp white finish give this pair the familiar look that works with denim, cargos, tracksuits, and relaxed tailoring.</p></div>
       </div>
+      <div class="block">
+        <div class="pic">
+          <img src="assets/af1-alt-side.jpg" alt="Alternate side view of the Nike Air Force 1 '07 Low">
+          <span class="cap">Materials and detail</span>
+        </div>
+        <div class="txt"><h3>Texture you can actually see</h3><p>Close stitching, flat laces, a padded collar, and a perforated toe box make the construction easier to scan than a plain text-only PDP block.</p></div>
+      </div>
+      <div class="block">
+        <div class="pic">
+          <img src="assets/af1-pair.jpg" alt="Pair of Nike Air Force 1 '07 Low shoes in white">
+          <span class="cap">Everyday rotation</span>
+        </div>
+        <div class="txt"><h3>Simple enough to wear often</h3><p>The product story works best when it stays grounded: show the shape, explain the comfort, and keep the buying details close to the decision point.</p></div>
+      </div>
+    </section>
+  </main>
 
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Plimsoll Inc. All rights reserved.</p>
-      <nav class="footer-bottom-links" aria-label="Legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Cookie Settings</a>
-        <a href="#">Accessibility</a>
-      </nav>
-    </div>
-  </div>
-</footer>
+  <script>
+    const mainImg = document.getElementById("mainImg");
+    const seg = document.getElementById("seg");
+    const treatments = document.querySelectorAll(".treatment");
 
-<script src="script.js"></script>
+    seg.addEventListener("click", function (e) {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const choice = btn.dataset.treat;
+
+      seg.querySelectorAll("button").forEach(button => {
+        button.setAttribute("aria-selected", String(button === btn));
+      });
+
+      treatments.forEach(treatment => {
+        const active = treatment.dataset.treatment === choice;
+        treatment.classList.toggle("active", active);
+        treatment.setAttribute("aria-hidden", String(!active));
+      });
+    });
+
+    const tabnav = document.getElementById("tabnav");
+    tabnav.addEventListener("click", function (e) {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const tab = btn.dataset.tab;
+
+      tabnav.querySelectorAll("button").forEach(button => {
+        button.setAttribute("aria-selected", String(button === btn));
+      });
+
+      document.querySelectorAll(".tabpanel").forEach(panel => {
+        const active = panel.dataset.panel === tab;
+        panel.classList.toggle("active", active);
+        panel.setAttribute("aria-hidden", String(!active));
+      });
+    });
+
+    document.getElementById("sizes").addEventListener("click", function (e) {
+      const btn = e.target.closest("button");
+      if (!btn || btn.disabled) return;
+      this.querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", "false"));
+      btn.setAttribute("aria-pressed", "true");
+    });
+
+    document.querySelector(".swatches").addEventListener("click", function (e) {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      this.querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", "false"));
+      btn.setAttribute("aria-pressed", "true");
+      const colour = btn.dataset.colour;
+      document.getElementById("colourLabel").textContent = `Colour - ${colour}`;
+      // Only White has real photography in this prototype; other colourways update the
+      // label only (production would map each colourway to its own image set).
+      const colourImages = {
+        White: ["assets/af1-side.jpg", "Nike Air Force 1 '07 Low white side profile"]
+      };
+      const thumbBtns = document.querySelectorAll(".thumbs button");
+      thumbBtns.forEach(button => button.setAttribute("aria-selected", "false"));
+      if (colourImages[colour]) {
+        thumbBtns[0].setAttribute("aria-selected", "true");
+        mainImg.src = colourImages[colour][0];
+        mainImg.alt = colourImages[colour][1];
+      }
+    });
+
+    document.querySelectorAll(".thumbs button").forEach(thumb => {
+      thumb.addEventListener("click", function () {
+        document.querySelectorAll(".thumbs button").forEach(button => button.setAttribute("aria-selected", "false"));
+        this.setAttribute("aria-selected", "true");
+        mainImg.src = this.dataset.src;
+        mainImg.alt = this.dataset.alt;
+      });
+    });
+  </script>
 </body>
 </html>
