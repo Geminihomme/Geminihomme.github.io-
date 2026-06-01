@@ -1,0 +1,12 @@
+# CODEOWNERS
+# Changes to the paths below require review from the core team.
+
+# Database migrations — require explicit approval before merging.
+/packages/db/migrations/ @trewe/core-team
+
+# CI/CD and security workflows
+/.github/workflows/ @trewe/core-team
+
+# Root infrastructure
+/docker-compose.yml @trewe/core-team
+/docker-compose.test.yml @trewe/core-team

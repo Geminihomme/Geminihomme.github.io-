@@ -1,0 +1,24 @@
+{
+  "name": "@trewe/connectors",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Integration connectors (Shopify, etc.)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./shopify": "./dist/shopify/index.js"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "dependencies": {
+    "@trewe/db": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0"
+  }
+}

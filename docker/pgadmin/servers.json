@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Trewe Dev",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "trewe_dev",
+      "Username": "trewe",
+      "SSLMode": "prefer",
+      "PassFile": "/pgpass"
+    }
+  }
+}
