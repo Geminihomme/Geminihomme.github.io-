@@ -1,0 +1,48 @@
+version: "3.9"
+
+# Test-environment compose file.
+# Uses ephemeral (anonymous) volumes so every test run starts with a clean DB.
+# Targets the trewe_test database to keep test data isolated from trewe_dev.
+#
+# Usage:
+#   docker compose -f docker-compose.test.yml up -d
+#   (or via: make test)
+
+networks:
+  trewe_test_net:
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: trewe_test
+      POSTGRES_USER: ${POSTGRES_USER:-trewe}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    ports:
+      - "5433:5432"
+    # No named volume — data is discarded when the container is removed.
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-trewe} -d trewe_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - trewe_test_net
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    tmpfs:
+      - /data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    networks:
+      - trewe_test_net
